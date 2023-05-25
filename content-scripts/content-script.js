@@ -1,18 +1,29 @@
-//spam hello world
-let claimElementList
-let isVisibleList
+let rootElement = null;
 setInterval(function() {
-    //target the .claim class and click it
+    console.log(rootElement);
+    //Get the root element
+    rootElement = document.getElementById('root');
+    console.log(rootElement);
 
-    // check if .claim and .is-visible are on the same element
-    // if they are, click the .claim class
-    claimElementList = document.getElementsByClassName("claim")
-    isVisibleList = document.getElementsByClassName("is-visible")
-    for (let claimElement of claimElementList) {
-        for (let isVisibleElement of isVisibleList) {
-            if (claimElement === isVisibleElement) {
-                claimElement.click()
-            }
+    //Check if the root element exists
+    if (rootElement) {
+    // Loop through the elements within the root element
+    for (var i = 0; i < rootElement.children.length; i++) {
+        var element = rootElement.children[i];
+
+        // Check if the element has a shadow root
+        if (element.shadowRoot) {
+        // Find all elements with the class "claim" within the shadow root
+        var claimElements = element.shadowRoot.querySelectorAll('.claim');
+
+        // Click on the first matching element (you can modify this logic as per your requirement)
+        if (claimElements.length > 0) {
+            //claimElements[0].click();
+            break; // Exit the loop after clicking the element
         }
+        }
+    }
+    } else {
+    console.info('Root element not found.');
     }
 }, 5000)

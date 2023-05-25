@@ -5,7 +5,7 @@
   "manifest_version": 3,
   "content_scripts": [
     {
-      "matches": ["https://ludwig.social/*"],
+      "matches": ["https://ludwig.social/*", "https://www.youtube.com/*"],
       "js": ["content-scripts/content-script.js"],
       "all_frames": true
     }
